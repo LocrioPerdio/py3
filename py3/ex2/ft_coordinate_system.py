@@ -1,5 +1,7 @@
 import math
 
+#TODO recortar espacios despues del split
+
 def valid_syntax(coords: list[str]) -> bool:
     for coord in coords:
         if len(coord) == 3:
@@ -20,7 +22,6 @@ def get_player_pos() -> tuple:
             valid_syntax(coords)
         except SyntaxError as e:
             print(e)
-            return
         for coord in coords:
             try:
                 coord = float(coord)
@@ -29,7 +30,7 @@ def get_player_pos() -> tuple:
                 print(f"Error on parameter {coord}: could no convert string to float: '{coord}'")
         if len(final) == 3:
             break
-        return tuple(final)
+    return tuple(final)
 
 if __name__ == "__main__":
     print ("=== Game Coordinate System ===\n")
