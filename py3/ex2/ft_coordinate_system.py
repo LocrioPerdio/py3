@@ -1,7 +1,5 @@
 import math
 
-#TODO recortar espacios despues del split
-
 def valid_syntax(coords: list[str]) -> bool:
         if len(coords) == 3:
                 check_syntax = True
