@@ -1,10 +1,11 @@
 import random
 
+
 def main():
     players: list = []
     players = init_players(players)
     distinct = set.union(*(player.achievements for player in players))
-    common  = set.intersection(*(player.achievements for player in players))
+    common = set.intersection(*(player.achievements for player in players))
     print("=== Achievement Tracker System ===\n")
     for player in players:
         player.show()
@@ -19,25 +20,28 @@ def main():
         print(f"{player.name} is missing:", missing)
 
 
-
 class Player:
     def __init__(self, name: str):
         self.name: str = name.capitalize()
-        self.achievements: set = set() 
-    
+        self.achievements: set = set()
+
     def show(self):
         print(f"Player {self.name}:", self.achievements)
 
     def gen_player_achievements(self) -> set:
-        achievements: list = ["Exorcist", "Floraphobe", "Natural Selector", "Galuf's Grail",
-                         "Limit Breaker", "Adamant Will", "Master's Seal", "Treasure Hunter",
-                         "Loremaster", "Superstar", "Instrument of Fate", "Instrument of Dissent",
-                         "Instrument of Tragedy", "Instrument of Flight", "Instrument of Survival",
-                         "Instrument of Rebellion", "Instrument of Shame"]
+        achievements: list = ["Exorcist", "Floraphobe", "Natural Selector",
+                              "Galuf's Grail", "Limit Breaker",
+                              "Adamant Will", "Master's Seal",
+                              "Treasure Hunter", "Loremaster", "Superstar",
+                              "Instrument of Fate", "Instrument of Dissent",
+                              "Instrument of Tragedy", "Instrument of Flight",
+                              "Instrument of Survival", "Instrument of Heal",
+                              "Instrument of Shame"]
         number: int = random.randint(4, 10)
         player_achievements: list = random.sample(achievements, number)
         player_set: set = set(player_achievements)
         return player_set
+
 
 def unique_achievements(player: Player, players: list[Player]) -> set:
     others = set.union(*(p.achievements for p in players if p != player))

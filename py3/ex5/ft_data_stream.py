@@ -1,6 +1,7 @@
 from typing import Generator
 import random
 
+
 def main() -> None:
     print("=== Game Data Stream Processor ===")
     print_1000()
@@ -17,18 +18,20 @@ def main() -> None:
 
 def gen_event() -> Generator:
     players: list[str] = ["laura", "pablo", "jesus", "cele"]
-    actions: list[str] = ["run", "eat", "sleep", "smash PC", "heal", "move", "climb", "catch Pokemon", "breed Chocobo"]
+    actions: list[str] = ["run", "eat", "sleep", "smash PC", "heal", "move",
+                          "climb", "catch Pokemon", "breed Chocobo"]
     player: str = random.choice(players)
     yield player
     action: str = random.choice(actions)
     yield action
 
+
 def consume_event(events: list[tuple]):
-        event = random.choice(events)
-        events.remove(event)
-        yield event
-        yield events
-        
+    event = random.choice(events)
+    events.remove(event)
+    yield event
+    yield events
+
 
 def gen_list() -> list[tuple]:
     event_list: list[tuple] = []
@@ -37,6 +40,7 @@ def gen_list() -> list[tuple]:
         event: tuple = (next(gen), next(gen))
         event_list.append(event)
     return event_list
+
 
 def print_1000() -> None:
     for number in range(1000):

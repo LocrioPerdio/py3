@@ -1,0 +1,27 @@
+p1: a, b, c
+p2: b, d, e
+p3: f
+
+total: a, b, c, d, e, f (union de los 3 conjuntos descartando duplicados)
+comun: b (interseccion de los 3 conjuntos)
+unicos:
+    p1: a, c
+    p2: d, e
+    p3: f
+
+funcion sacar_unicos:
+    booleano unico = True
+    guardar en una variable cada conjunto
+        comparar el primer elemento del primer conjunto con todos los demas elementos de los otros conjuntos
+            si son iguales: unico = False
+            si son distintos: continue
+        si unico == True
+            añadir a lista_unicos
+        pasar al siguiente elemento del primer conjunto       
+    retornar lista_unicos
+
+---- cómo sería utilizando set.difference:
+Se necesita: - el conjunto del player actualç
+             - la union de los conjuntos de los otros players
+Con esto:
+    lista_unicos = player[n].achievements.difference(players[n:].achievements)
