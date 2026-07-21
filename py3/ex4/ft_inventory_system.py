@@ -37,6 +37,8 @@ def find_max(inventory: dict) -> str:
     return(max_item)
 
 def find_min(inventory: dict, max_value = int) -> str:
+    if len(inventory) == 1:
+        return list(inventory.keys())[0]
     min_value = max_value
     for item in inventory:
         value = inventory[item]
