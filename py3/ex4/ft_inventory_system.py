@@ -2,7 +2,7 @@ from sys import argv
 
 
 def main() -> None:
-    inventory: dict = {}
+    inventory: dict[str, int] = {}
     print("=== Inventory System Analysis ===")
     inventory = parse_args(argv, inventory)
     if inventory:
@@ -31,17 +31,17 @@ class DupError(Exception):
         self.message = message
 
 
-def find_max(inventory: dict) -> str:
-    max_value = 0
+def find_max(inventory: dict[str, int]) -> str:
+    max_value: int = 0
     for item in inventory:
         value = inventory[item]
         if value > max_value:
             max_value = value
-            max_item = item
+            max_item: str = item
     return max_item
 
 
-def find_min(inventory: dict, max_value: int) -> str:
+def find_min(inventory: dict[str, int], max_value: int) -> str:
     if len(inventory) == 1:
         return list(inventory.keys())[0]
     min_value = max_value
@@ -53,7 +53,7 @@ def find_min(inventory: dict, max_value: int) -> str:
     return min_item
 
 
-def parse_args(args: list[str], inventory: dict) -> dict:
+def parse_args(args: list[str], inventory: dict[str, int]) -> dict[str, int]:
     if len(argv) == 1:
         print("No items provided")
     for arg in args[1:]:

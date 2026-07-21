@@ -1,7 +1,7 @@
 import random
 
 
-def main():
+def main() -> None:
     players: list = []
     players = init_players(players)
     distinct = set.union(*(player.achievements for player in players))

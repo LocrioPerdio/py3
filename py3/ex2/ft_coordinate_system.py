@@ -10,7 +10,7 @@ def valid_syntax(coords: list[str]) -> bool:
     return check_syntax
 
 
-def get_player_pos() -> tuple:
+def get_player_pos() -> tuple[float, ...]:
     while True:
         user_input: str = input("Enter new coordinates as"
                                 " floats in format 'x,y,z':")
@@ -20,8 +20,8 @@ def get_player_pos() -> tuple:
             valid_syntax(coords)
             for coord in coords:
                 try:
-                    coord = float(coord)
-                    final.append(coord)
+                    value = float(coord)
+                    final.append(value)
                 except ValueError:
                     print(f"Error on parameter {coord}:"
                           "could no convert string to float: '{coord}'")
@@ -32,7 +32,8 @@ def get_player_pos() -> tuple:
     return tuple(final)
 
 
-def get_distance(dest: tuple, origin: tuple) -> float:
+def get_distance(dest: tuple[float, float, float],
+                 origin: tuple[float, float, float]) -> float:
     distance = math.sqrt((dest[0] - origin[0])**2 +
                          (dest[1] - origin[1])**2 + (dest[2] - origin[2])**2)
     distance = round(distance, 4)
@@ -42,12 +43,12 @@ def get_distance(dest: tuple, origin: tuple) -> float:
 if __name__ == "__main__":
     print("=== Game Coordinate System ===\n")
     print("Get a first set of coordinates")
-    first_tuple: tuple = get_player_pos()
+    first_tuple: tuple[float, float, float] = get_player_pos()
     print(f"Got a first tuple: {first_tuple}")
     print(f"It includes: X={first_tuple[0]}, Y={first_tuple[1]},"
           f" Z={first_tuple[2]}")
     print("Distance to center: ", end="")
-    print(get_distance(first_tuple, [0, 0, 0]))
+    print(get_distance(first_tuple, (0, 0, 0)))
     print()
     print("Get a second set of coordinates")
     second_tuple: tuple = get_player_pos()
